@@ -62,7 +62,6 @@ export const register = async (req: Request, res: Response) => {
 
     const token = generateToken(newUser.id);
     const userObj = newUser.toObject();
-    delete userObj.password;
 
     res.status(201).json({ user: userObj, token });
   } catch (error) {
@@ -100,7 +99,6 @@ export const login = async (req: Request, res: Response) => {
 
     const token = generateToken(foundUser.id);
     const userObj = foundUser.toObject();
-    delete userObj.password;
 
     res.status(200).json({ user: userObj, token });
   } catch (error) {
